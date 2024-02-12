@@ -47,7 +47,7 @@
   width: 100vw;
   height: 25vh;
   position: fixed;
-  background-color: black;
+  background-color: teal;
   color: antiquewhite;
   display: flex;
   align-items: center; 
@@ -64,4 +64,15 @@
 Grid{
   text-align: center;
   align-items: center;
+}
+
+.meeting-row {
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+
+.meeting-icon {
+  margin-right: 10px;
 }
