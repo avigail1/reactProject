@@ -3,7 +3,6 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PersonIcon from '@mui/icons-material/Person';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import dataStore from "../../data/dataStore";
 
 const Meeting = observer((value) => {
   const date = (e) => {
