@@ -3,39 +3,50 @@ import dataStore from "../../data/dataStore"
 import Meeting from './Meeting'
 import { Box } from "@mui/system"
 import { Grid } from "@mui/material"
-// import { red ,green ,orange} from "@mui/material/colors"
 import dayjs from "dayjs"
 
 const MeetingList = observer(() => {
 
+  const sortedMeetings = [...dataStore.meeting].sort((a, b) => {
+    const dateA = dayjs(a.dateTime.fullDate);
+    const dateB = dayjs(b.dateTime.fullDate);
+    return dateA - dateB;
+  });
 
-  const getcolor = (e) => {
-    const today = new Date();
-    const timeDifference = dayjs(e.fullDate).toDate() - today;
-    const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24)) + 1;
-    if (daysDifference <= 1) {
-      return "red";
+  const groupedMeetings = sortedMeetings.reduce((groups, meeting) => {
+    const date = dayjs(meeting.dateTime.fullDate);
+    const key = date.isSame(dayjs(), 'day')
+      ? 'today'
+      : date.isSame(dayjs().add(1, 'day'), 'day')
+        ? 'tomorrow'
+        : 'later';
+
+    if (!groups[key]) {
+      groups[key] = [];
     }
-    if (daysDifference <= 7) {
-      return "orange";
-    }
-    return "green";
-  }
+    groups[key].push(meeting);
+    return groups;
+  }, {});
 
   return (
     <>
       <Box sx={{ width: '100%' }}>
         <Grid item xs={6}>
-          <h1>the appoitments</h1>
+          <h1>the appointments</h1>
         </Grid>
-        <Grid container spacing={2}>
-          {dataStore.meeting.map((value, idx) => (
-            <Grid item xs={12} sm={6} md={3} key={idx} color={getcolor(value)}>
-              <h2>{idx < 9 ? "0" : ""}{idx + 1}</h2>
-              <Meeting {...value} />
+        {Object.entries(groupedMeetings).map(([group, meetings]) => (
+          <div key={group} className={group}>
+            <h2>{group}</h2>
+            <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 3, md: 3 }}>
+              {meetings.map((value, idx) => (
+                <Grid item xs={4} sm={6} md={4} key={idx}>
+                  <h2>{idx < 9 ? "0" : ""}{idx + 1}</h2>
+                  <Meeting {...value} />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </div>
+        ))}
       </Box>
     </>
   )

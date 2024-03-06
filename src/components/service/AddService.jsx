@@ -7,7 +7,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button, FormGroup, TextField } from "@mui/material";
 
-import dataStore from '../../data/dataStore'
 import { appendService } from '../../data/server'
 
 function AddService() {
@@ -52,6 +51,7 @@ function AddService() {
         <DialogContent>
           <FormGroup onSubmit={handleSaveChanges}>
             <TextField
+            autocomplete="off"
               label="name"
               name="name"
               type="text"
@@ -87,20 +87,3 @@ function AddService() {
 }
 
 export default AddService;
-// import AddSomething from "../add/Add"
-
-
-// export default function AddService(){
-
-//   function saveThisChanges(params) {
-//       console.log(params);
-//  }
- 
-//   return ( 
-//   <>
-//     <AddSomething what={"Service"} SaveChanges={saveThisChanges}/>
-
-
-//   </>)
- 
-// }

@@ -43,7 +43,7 @@ function AddMeeting() {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: res===false?"one or more from the fields is not full":"the date is already exist, please enter enother date",
+      text: res===false?"one or more from the fields is not full":res==="date"?"the date is already exist, please enter enother date":"there was an error",
     });
    }
 

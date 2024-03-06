@@ -2,11 +2,10 @@
 import { useEffect } from "react"
 import "./App.css"
 import BusinessData from "./components/businessData/BusinessData"
-import EditBusinessData from "./components/businessData/EditBusinessData"
 import AddMeeting from "./components/meeting/AddMeeting"
-import MeetingList from "./components/meeting/MeetingList"
 import ServicesList from './components/service/ServicesList'
 import dataStore from "./data/dataStore"
+import { Avatar } from "@mui/material"
 
 
 function App() {
@@ -18,6 +17,7 @@ function App() {
   return (
      <>
      <div className="nav" >
+     <Avatar alt="logo image" src="https://www.biu.ac.il/sites/default/files/styles/medium_hero_mobile/public/images/tracks/440_large.jpg?h=85e42549&itok=ZRntWvZC" className="Avatar"/>
         <BusinessData/>
      </div>
      <ServicesList/>

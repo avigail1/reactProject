@@ -4,6 +4,7 @@ import Login from './Login';
 import AdminHome from './AdminHome';
 import BusinessData from '../businessData/BusinessData';
 import EditBussinessData from '../businessData/EditBusinessData'
+import { Avatar } from '@mui/material';
 
 const AdminPage = observer(() => {
   return (
@@ -14,6 +15,7 @@ const AdminPage = observer(() => {
       {!dataStore.isLogin ? <Login /> : (
         <>
           <div className="nav">
+          <Avatar alt="logo image" src="https://www.biu.ac.il/sites/default/files/styles/medium_hero_mobile/public/images/tracks/440_large.jpg?h=85e42549&itok=ZRntWvZC" className="Avatar"/>
             <BusinessData />
             <EditBussinessData/>
           </div>

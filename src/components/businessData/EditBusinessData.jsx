@@ -10,8 +10,8 @@ import Swal from 'sweetalert2'
 function EditBusinessData() {
   const [open, setOpen] = useState(false);
  const [bd,setBd]=useState({
-  name:"",
-  vision: "",
+  name:dataStore.businessData.name,
+  vision: dataStore.businessData.vision,
  })
 
   const handleOpenClose = () => {
